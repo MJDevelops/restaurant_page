@@ -1,4 +1,6 @@
 import createHome from './home';
+import createMenu from './menu';
+import createContact from './contact';
 
 function prepareButtons() {
     const homeBtn = document.createElement('button');
@@ -14,24 +16,39 @@ function prepareButtons() {
     contactBtn.classList.add('btn-nav');
 
 
-    return { homeBtn, menuBtn, contactBtn };
+    return [ homeBtn, menuBtn, contactBtn ];
 }
 
 function addButtonFunctionality() {
     const buttons = prepareButtons();
-    const navButtons = document.querySelectorAll('btn-nav');
 
-    buttons.homeBtn.addEventListener('click', (e) => {
-        navButtons.forEach((button) => {
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            callFunction: if (e.target.classList.contains('active')) {
+                break callFunction;
+            }
+            else { 
+                buttons.forEach((btn) => {
+                    if (btn.classList.contains('active')) {
+                        btn.classList.remove('active');
+                    }
+                });
+                if (button === buttons[0]) {
+                    createHome();
+                }
+                else if (button === buttons[1]) {
+                    createMenu();
+                } else {
+                    createContact();
+                }
+                e.target.classList.add('active');
             }
         });
-        e.target.classList.add('active');
-        createHome();
+        
     });
 
-    return [buttons.homeBtn, buttons.menuBtn, buttons.contactBtn];
+    return buttons;
 }
 
 export default addButtonFunctionality;

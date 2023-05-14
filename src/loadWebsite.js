@@ -4,15 +4,18 @@ import HomeImage from './images/home.jpg';
 
 function initPage() {
     const mainDiv = document.createElement('div');
+    const footer = document.createElement('footer');
     const image = new Image();
-    const documentBody = document.body;
+    const documentBody = document.querySelector('body');
 
     mainDiv.id = 'content';
     image.src = HomeImage;
-    mainDiv.style.background = image;
+    footer.innerHTML = '&#169; Image from wallpaperset.com';
 
-    mainDiv.appendChild(createHome());
+    mainDiv.appendChild(image);
     mainDiv.appendChild(createNav());
+    mainDiv.appendChild(createHome());
+    mainDiv.appendChild(footer);
     documentBody.appendChild(mainDiv);
 }
 

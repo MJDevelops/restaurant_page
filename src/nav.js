@@ -8,6 +8,7 @@ function createNav() {
 
     navDiv.id = 'nav';
     btnDiv.id = 'buttons';
+    buttons[0].classList.add('active');
 
     paragraph.innerHTML = 'Restaurant Page';
     navDiv.appendChild(paragraph);
